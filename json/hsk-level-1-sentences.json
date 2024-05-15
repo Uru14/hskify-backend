@@ -1,0 +1,902 @@
+[
+  {
+    "id": 1,
+    "characterid": 1,
+    "sentence": "我爱你",
+    "translation": "I love you"
+  },
+  {
+    "id": 2,
+    "characterid": 2,
+    "sentence": "我有八个苹果",
+    "translation": "I have eight apples"
+  },
+  {
+    "id": 3,
+    "characterid": 3,
+    "sentence": "我的爸爸是医生",
+    "translation": "My father is a doctor"
+  },
+  {
+    "id": 4,
+    "characterid": 4,
+    "sentence": "请给我那个杯子",
+    "translation": "Please give me that cup"
+  },
+  {
+    "id": 5,
+    "characterid": 5,
+    "sentence": "我在北京出生",
+    "translation": "I was born in Beijing"
+  },
+  {
+    "id": 6,
+    "characterid": 6,
+    "sentence": "这本书很有趣",
+    "translation": "This book is very interesting"
+  },
+  {
+    "id": 7,
+    "characterid": 7,
+    "sentence": "谢谢你的帮助，不客气",
+    "translation": "Thank you for your help, you're welcome"
+  },
+  {
+    "id": 8,
+    "characterid": 8,
+    "sentence": "我不知道",
+    "translation": "I don't know"
+  },
+  {
+    "id": 9,
+    "characterid": 9,
+    "sentence": "这个菜很好吃",
+    "translation": "This dish is very tasty"
+  },
+  {
+    "id": 10,
+    "characterid": 10,
+    "sentence": "我想喝茶",
+    "translation": "I would like to drink tea"
+  },
+  {
+    "id": 11,
+    "characterid": 11,
+    "sentence": "我吃饭",
+    "translation": "I eat"
+  },
+  {
+    "id": 12,
+    "characterid": 12,
+    "sentence": "出租车在哪里?",
+    "translation": "Where is the taxi?"
+  },
+  {
+    "id": 13,
+    "characterid": 13,
+    "sentence": "我打电话",
+    "translation": "I make a phone call"
+  },
+  {
+    "id": 14,
+    "characterid": 14,
+    "sentence": "这个很大",
+    "translation": "This is very big"
+  },
+  {
+    "id": 15,
+    "characterid": 15,
+    "sentence": "我的书",
+    "translation": "My book"
+  },
+  {
+    "id": 16,
+    "characterid": 16,
+    "sentence": "三点钟",
+    "translation": "Three o'clock"
+  },
+  {
+    "id": 17,
+    "characterid": 17,
+    "sentence": "我有电脑",
+    "translation": "I have a computer"
+  },
+  {
+    "id": 18,
+    "characterid": 18,
+    "sentence": "我看电视",
+    "translation": "I watch TV"
+  },
+  {
+    "id": 19,
+    "characterid": 19,
+    "sentence": "我看电影",
+    "translation": "I watch a movie"
+  },
+  {
+    "id": 20,
+    "characterid": 20,
+    "sentence": "你买什么东西?",
+    "translation": "What are you buying?"
+  },
+  {
+    "id": 21,
+    "characterid": 21,
+    "sentence": "我们都去",
+    "translation": "We all go"
+  },
+  {
+    "id": 22,
+    "characterid": 22,
+    "sentence": "我读书",
+    "translation": "I read a book"
+  },
+  {
+    "id": 23,
+    "characterid": 23,
+    "sentence": "对不起，我迟到了",
+    "translation": "Sorry, I am late"
+  },
+  {
+    "id": 24,
+    "characterid": 24,
+    "sentence": "太多了",
+    "translation": "Too much"
+  },
+  {
+    "id": 25,
+    "characterid": 25,
+    "sentence": "这个多少钱?",
+    "translation": "How much is this?"
+  },
+  {
+    "id": 26,
+    "characterid": 26,
+    "sentence": "他是我的儿子",
+    "translation": "He is my son"
+  },
+  {
+    "id": 27,
+    "characterid": 27,
+    "sentence": "一加一等于二",
+    "translation": "One plus one equals two"
+  },
+  {
+    "id": 28,
+    "characterid": 28,
+    "sentence": "我们去饭馆",
+    "translation": "We go to a restaurant"
+  },
+  {
+    "id": 29,
+    "characterid": 29,
+    "sentence": "我坐飞机去",
+    "translation": "I go by airplane"
+  },
+  {
+    "id": 30,
+    "characterid": 30,
+    "sentence": "五分钟后",
+    "translation": "After five minutes"
+  },
+  {
+    "id": 31,
+    "characterid": 31,
+    "sentence": "我很高兴",
+    "translation": "I am very happy"
+  },
+  {
+    "id": 32,
+    "characterid": 32,
+    "sentence": "一个苹果",
+    "translation": "One apple"
+  },
+  {
+    "id": 33,
+    "characterid": 33,
+    "sentence": "我要工作",
+    "translation": "I have to work"
+  },
+  {
+    "id": 34,
+    "characterid": 34,
+    "sentence": "看那只狗",
+    "translation": "Look at that dog"
+  },
+  {
+    "id": 35,
+    "characterid": 35,
+    "sentence": "我学汉语",
+    "translation": "I learn Chinese"
+  },
+  {
+    "id": 36,
+    "characterid": 36,
+    "sentence": "这个很好",
+    "translation": "This is very good"
+  },
+  {
+    "id": 37,
+    "characterid": 37,
+    "sentence": "我要喝水",
+    "translation": "I want to drink water"
+  },
+  {
+    "id": 38,
+    "characterid": 38,
+    "sentence": "我和你去",
+    "translation": "I go with you"
+  },
+  {
+    "id": 39,
+    "characterid": 39,
+    "sentence": "这个很大",
+    "translation": "This is very big"
+  },
+  {
+    "id": 40,
+    "characterid": 40,
+    "sentence": "书在桌子后面",
+    "translation": "The book is behind the desk"
+  },
+  {
+    "id": 41,
+    "characterid": 41,
+    "sentence": "我回家",
+    "translation": "I go home"
+  },
+  {
+    "id": 42,
+    "characterid": 42,
+    "sentence": "我会说中文",
+    "translation": "I can speak Chinese"
+  },
+  {
+    "id": 43,
+    "characterid": 43,
+    "sentence": "火车站在哪里?",
+    "translation": "Where is the train station?"
+  },
+  {
+    "id": 44,
+    "characterid": 44,
+    "sentence": "你有几本书?",
+    "translation": "How many books do you have?"
+  },
+  {
+    "id": 45,
+    "characterid": 45,
+    "sentence": "我的家很大",
+    "translation": "My home is big"
+  },
+  {
+    "id": 46,
+    "characterid": 46,
+    "sentence": "他叫什么名字?",
+    "translation": "What is his name?"
+  },
+  {
+    "id": 47,
+    "characterid": 47,
+    "sentence": "今天是星期一",
+    "translation": "Today is Monday"
+  },
+  {
+    "id": 48,
+    "characterid": 48,
+    "sentence": "一加八等于九",
+    "translation": "One plus eight equals nine"
+  },
+  {
+    "id": 49,
+    "characterid": 49,
+    "sentence": "请开门",
+    "translation": "Please open the door"
+  },
+  {
+    "id": 50,
+    "characterid": 50,
+    "sentence": "我喜欢看书",
+    "translation": "I like to read books"
+  },
+  {
+    "id": 51,
+    "characterid": 51,
+    "sentence": "我看见猫",
+    "translation": "I see a cat"
+  },
+  {
+    "id": 52,
+    "characterid": 52,
+    "sentence": "五块钱",
+    "translation": "Five yuan"
+  },
+  {
+    "id": 53,
+    "characterid": 53,
+    "sentence": "他来了",
+    "translation": "He has come"
+  },
+  {
+    "id": 54,
+    "characterid": 54,
+    "sentence": "我的老师",
+    "translation": "My teacher"
+  },
+  {
+    "id": 55,
+    "characterid": 55,
+    "sentence": "我吃了",
+    "translation": "I have eaten"
+  },
+  {
+    "id": 56,
+    "characterid": 56,
+    "sentence": "今天很冷",
+    "translation": "It is very cold today"
+  },
+  {
+    "id": 57,
+    "characterid": 57,
+    "sentence": "书在桌子里",
+    "translation": "The book is in the desk"
+  },
+  {
+    "id": 58,
+    "characterid": 58,
+    "sentence": "零下五度",
+    "translation": "Minus five degrees"
+  },
+  {
+    "id": 59,
+    "characterid": 59,
+    "sentence": "六加一",
+    "translation": "Six plus one"
+  },
+  {
+    "id": 60,
+    "characterid": 60,
+    "sentence": "我的妈妈",
+    "translation": "My mom"
+  },
+  {
+    "id": 61,
+    "characterid": 61,
+    "sentence": "你好吗?",
+    "translation": "How are you?"
+  },
+  {
+    "id": 62,
+    "characterid": 62,
+    "sentence": "我要买苹果",
+    "translation": "I want to buy apples"
+  },
+  {
+    "id": 63,
+    "characterid": 63,
+    "sentence": "看那只猫",
+    "translation": "Look at that cat"
+  },
+  {
+    "id": 64,
+    "characterid": 64,
+    "sentence": "我没钱",
+    "translation": "I have no money"
+  },
+  {
+    "id": 65,
+    "characterid": 65,
+    "sentence": "没关系",
+    "translation": "It doesn't matter"
+  },
+  {
+    "id": 66,
+    "characterid": 66,
+    "sentence": "我吃米饭",
+    "translation": "I eat rice"
+  },
+  {
+    "id": 67,
+    "characterid": 67,
+    "sentence": "明天见",
+    "translation": "See you tomorrow"
+  },
+  {
+    "id": 68,
+    "characterid": 68,
+    "sentence": "你叫什么名字?",
+    "translation": "What is your name?"
+  },
+  {
+    "id": 69,
+    "characterid": 69,
+    "sentence": "哪里疼?",
+    "translation": "Where does it hurt?"
+  },
+  {
+    "id": 70,
+    "characterid": 70,
+    "sentence": "那是什么?",
+    "translation": "What is that?"
+  },
+  {
+    "id": 71,
+    "characterid": 71,
+    "sentence": "天气怎么样呢?",
+    "translation": "How is the weather?"
+  },
+  {
+    "id": 72,
+    "characterid": 72,
+    "sentence": "我能帮你",
+    "translation": "I can help you"
+  },
+  {
+    "id": 73,
+    "characterid": 73,
+    "sentence": "你好",
+    "translation": "Hello"
+  },
+  {
+    "id": 74,
+    "characterid": 74,
+    "sentence": "今年是2023年",
+    "translation": "This year is 2023"
+  },
+  {
+    "id": 75,
+    "characterid": 75,
+    "sentence": "这是我的女儿",
+    "translation": "This is my daughter"
+  },
+  {
+    "id": 76,
+    "characterid": 76,
+    "sentence": "他是我的朋友",
+    "translation": "He is my friend"
+  },
+  {
+    "id": 77,
+    "characterid": 77,
+    "sentence": "她很漂亮",
+    "translation": "She is very beautiful"
+  },
+  {
+    "id": 78,
+    "characterid": 78,
+    "sentence": "我喜欢吃苹果",
+    "translation": "I like to eat apples"
+  },
+  {
+    "id": 79,
+    "characterid": 79,
+    "sentence": "一加六等于七",
+    "translation": "One plus six equals seven"
+  },
+  {
+    "id": 80,
+    "characterid": 80,
+    "sentence": "我没有钱",
+    "translation": "I have no money"
+  },
+  {
+    "id": 81,
+    "characterid": 81,
+    "sentence": "书在桌子前面",
+    "translation": "The book is in front of the desk"
+  },
+  {
+    "id": 82,
+    "characterid": 82,
+    "sentence": "请进",
+    "translation": "Please come in"
+  },
+  {
+    "id": 83,
+    "characterid": 83,
+    "sentence": "我要去学校",
+    "translation": "I am going to school"
+  },
+  {
+    "id": 84,
+    "characterid": 84,
+    "sentence": "今天很热",
+    "translation": "It is very hot today"
+  },
+  {
+    "id": 85,
+    "characterid": 85,
+    "sentence": "那个人",
+    "translation": "That person"
+  },
+  {
+    "id": 86,
+    "characterid": 86,
+    "sentence": "我认识她",
+    "translation": "I know her"
+  },
+  {
+    "id": 87,
+    "characterid": 87,
+    "sentence": "今天是五月一日",
+    "translation": "Today is May 1st"
+  },
+  {
+    "id": 88,
+    "characterid": 88,
+    "sentence": "一加二等于三",
+    "translation": "One plus two equals three"
+  },
+  {
+    "id": 89,
+    "characterid": 89,
+    "sentence": "我去商店",
+    "translation": "I am going to the store"
+  },
+  {
+    "id": 90,
+    "characterid": 90,
+    "sentence": "书在桌子上",
+    "translation": "The book is on the table"
+  },
+  {
+    "id": 91,
+    "characterid": 91,
+    "sentence": "我上午工作",
+    "translation": "I work in the morning"
+  },
+  {
+    "id": 92,
+    "characterid": 92,
+    "sentence": "水很少",
+    "translation": "There is little water"
+  },
+  {
+    "id": 93,
+    "characterid": 93,
+    "sentence": "你是谁?",
+    "translation": "Who are you?"
+  },
+  {
+    "id": 94,
+    "characterid": 94,
+    "sentence": "你要什么?",
+    "translation": "What do you want?"
+  },
+  {
+    "id": 95,
+    "characterid": 95,
+    "sentence": "一加九等于十",
+    "translation": "One plus nine equals ten"
+  },
+  {
+    "id": 96,
+    "characterid": 96,
+    "sentence": "现在是什么时候?",
+    "translation": "What time is it now?"
+  },
+  {
+    "id": 97,
+    "characterid": 97,
+    "sentence": "这是书",
+    "translation": "This is a book"
+  },
+  {
+    "id": 98,
+    "characterid": 98,
+    "sentence": "我读书",
+    "translation": "I read a book"
+  },
+  {
+    "id": 99,
+    "characterid": 99,
+    "sentence": "我要喝水",
+    "translation": "I want to drink water"
+  },
+  {
+    "id": 100,
+    "characterid": 100,
+    "sentence": "我喜欢吃水果",
+    "translation": "I like to eat fruit"
+  },
+  {
+    "id": 101,
+    "characterid": 101,
+    "sentence": "我要睡觉",
+    "translation": "I want to sleep"
+  },
+  {
+    "id": 102,
+    "characterid": 102,
+    "sentence": "他在说话",
+    "translation": "He is talking"
+  },
+  {
+    "id": 103,
+    "characterid": 103,
+    "sentence": "一加三等于四",
+    "translation": "One plus three equals four"
+  },
+  {
+    "id": 104,
+    "characterid": 104,
+    "sentence": "我五岁",
+    "translation": "I am five years old"
+  },
+  {
+    "id": 105,
+    "characterid": 105,
+    "sentence": "他是学生",
+    "translation": "He is a student"
+  },
+  {
+    "id": 106,
+    "characterid": 106,
+    "sentence": "她是医生",
+    "translation": "She is a doctor"
+  },
+  {
+    "id": 107,
+    "characterid": 107,
+    "sentence": "太好了",
+    "translation": "That's great"
+  },
+  {
+    "id": 108,
+    "characterid": 108,
+    "sentence": "今天天气怎么样?",
+    "translation": "How is the weather today?"
+  },
+  {
+    "id": 109,
+    "characterid": 109,
+    "sentence": "我听音乐",
+    "translation": "I listen to music"
+  },
+  {
+    "id": 110,
+    "characterid": 110,
+    "sentence": "他是我的同学",
+    "translation": "He is my classmate"
+  },
+  {
+    "id": 111,
+    "characterid": 111,
+    "sentence": "喂，你好吗?",
+    "translation": "Hello, how are you?"
+  },
+  {
+    "id": 112,
+    "characterid": 112,
+    "sentence": "我是学生",
+    "translation": "I am a student"
+  },
+  {
+    "id": 113,
+    "characterid": 113,
+    "sentence": "我们去学校",
+    "translation": "We go to school"
+  },
+  {
+    "id": 114,
+    "characterid": 114,
+    "sentence": "一加四等于五",
+    "translation": "One plus four equals five"
+  },
+  {
+    "id": 115,
+    "characterid": 115,
+    "sentence": "我喜欢你",
+    "translation": "I like you"
+  },
+  {
+    "id": 116,
+    "characterid": 116,
+    "sentence": "书在桌子下",
+    "translation": "The book is under the table"
+  },
+  {
+    "id": 117,
+    "characterid": 117,
+    "sentence": "我下午工作",
+    "translation": "I work in the afternoon"
+  },
+  {
+    "id": 118,
+    "characterid": 118,
+    "sentence": "外面在下雨",
+    "translation": "It is raining outside"
+  },
+  {
+    "id": 119,
+    "characterid": 119,
+    "sentence": "他是我的先生",
+    "translation": "He is my husband"
+  },
+  {
+    "id": 120,
+    "characterid": 120,
+    "sentence": "现在我忙",
+    "translation": "I am busy now"
+  },
+  {
+    "id": 121,
+    "characterid": 121,
+    "sentence": "我想你",
+    "translation": "I miss you"
+  },
+  {
+    "id": 122,
+    "characterid": 122,
+    "sentence": "猫很小",
+    "translation": "The cat is small"
+  },
+  {
+    "id": 123,
+    "characterid": 123,
+    "sentence": "那位小姐",
+    "translation": "That young lady"
+  },
+  {
+    "id": 124,
+    "characterid": 124,
+    "sentence": "我需要一些帮助",
+    "translation": "I need some help"
+  },
+  {
+    "id": 125,
+    "characterid": 125,
+    "sentence": "我在写信",
+    "translation": "I am writing a letter"
+  },
+  {
+    "id": 126,
+    "characterid": 126,
+    "sentence": "谢谢你",
+    "translation": "Thank you"
+  },
+  {
+    "id": 127,
+    "characterid": 127,
+    "sentence": "今天是星期三",
+    "translation": "Today is Wednesday"
+  },
+  {
+    "id": 128,
+    "characterid": 128,
+    "sentence": "他是学生",
+    "translation": "He is a student"
+  },
+  {
+    "id": 129,
+    "characterid": 129,
+    "sentence": "我喜欢学习",
+    "translation": "I like to study"
+  },
+  {
+    "id": 130,
+    "characterid": 130,
+    "sentence": "我在学校",
+    "translation": "I am at school"
+  },
+  {
+    "id": 131,
+    "characterid": 131,
+    "sentence": "一加一等于二",
+    "translation": "One plus one equals two"
+  },
+  {
+    "id": 132,
+    "characterid": 132,
+    "sentence": "这是我的衣服",
+    "translation": "These are my clothes"
+  },
+  {
+    "id": 133,
+    "characterid": 133,
+    "sentence": "她是医生",
+    "translation": "She is a doctor"
+  },
+  {
+    "id": 134,
+    "characterid": 134,
+    "sentence": "医院在哪里?",
+    "translation": "Where is the hospital?"
+  },
+  {
+    "id": 135,
+    "characterid": 135,
+    "sentence": "那把椅子是新的",
+    "translation": "That chair is new"
+  },
+  {
+    "id": 136,
+    "characterid": 136,
+    "sentence": "我有一个苹果",
+    "translation": "I have an apple"
+  },
+  {
+    "id": 137,
+    "characterid": 137,
+    "sentence": "今天是八月",
+    "translation": "Today is August"
+  },
+  {
+    "id": 138,
+    "characterid": 138,
+    "sentence": "书在桌子上",
+    "translation": "The book is on the table"
+  },
+  {
+    "id": 139,
+    "characterid": 139,
+    "sentence": "明天见，再见",
+    "translation": "See you tomorrow, goodbye"
+  },
+  {
+    "id": 140,
+    "characterid": 140,
+    "sentence": "这怎么做?",
+    "translation": "How do you do this?"
+  },
+  {
+    "id": 141,
+    "characterid": 141,
+    "sentence": "你觉得怎么样?",
+    "translation": "What do you think?"
+  },
+  {
+    "id": 142,
+    "characterid": 142,
+    "sentence": "这是什么?",
+    "translation": "What is this?"
+  },
+  {
+    "id": 143,
+    "characterid": 143,
+    "sentence": "我来自中国",
+    "translation": "I am from China"
+  },
+  {
+    "id": 144,
+    "characterid": 144,
+    "sentence": "现在是中午",
+    "translation": "It is noon now"
+  },
+  {
+    "id": 145,
+    "characterid": 145,
+    "sentence": "我在酒店住",
+    "translation": "I stay at the hotel"
+  },
+  {
+    "id": 146,
+    "characterid": 146,
+    "sentence": "桌子上有书",
+    "translation": "There are books on the table"
+  },
+  {
+    "id": 147,
+    "characterid": 147,
+    "sentence": "这个字怎么写?",
+    "translation": "How do you write this character?"
+  },
+  {
+    "id": 148,
+    "characterid": 148,
+    "sentence": "昨天我去了市场",
+    "translation": "I went to the market yesterday"
+  },
+  {
+    "id": 149,
+    "characterid": 149,
+    "sentence": "请坐",
+    "translation": "Please sit down"
+  },
+  {
+    "id": 150,
+    "characterid": 150,
+    "sentence": "我喜欢做饭",
+    "translation": "I like cooking"
+  }
+]
