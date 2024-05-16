@@ -7,9 +7,18 @@ from models import (UserResponse, UserCreate, Token, TokenData, Login, HanziSimp
 from utils.security import verify_password, create_access_token, get_password_hash
 from sqlalchemy.sql.expression import func
 from typing import List
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
+# Configuración de CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:4200"],  
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 def get_db():
     db = SessionLocal()
