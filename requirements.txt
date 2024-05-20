@@ -1,4 +1,6 @@
-fastapi uvicorn
+fastapi
+uvicorn
 sqlalchemy databases[postgresql] psycopg2
 passlib[bcrypt]
 python-jose[cryptography] passlib[bcrypt]
+cachetools

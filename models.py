@@ -30,6 +30,7 @@ class HanziSimpleResponse(BaseModel):
 
 
 class CharacterFlashcardResponse(BaseModel):
+    id: int
     hanzi: str
     pinyin: str
     translation: str

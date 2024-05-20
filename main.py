@@ -8,17 +8,20 @@ from utils.security import verify_password, create_access_token, get_password_ha
 from sqlalchemy.sql.expression import func
 from typing import List
 from fastapi.middleware.cors import CORSMiddleware
+from cachetools import TTLCache
+from datetime import timedelta
 
 app = FastAPI()
 
 # Configuración de CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:4200"],  
+    allow_origins=["http://localhost:4200"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 def get_db():
     db = SessionLocal()
@@ -55,21 +58,32 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)):
     db.refresh(db_user)
     return db_user
 
+
+#Se crea un cache que guarda 1 item y expira después de 24h
+cache = TTLCache(maxsize=1, ttl=timedelta(days=1).total_seconds())
+
+
 @app.get("/wordDay/", response_model=HanziSimpleResponse)
 def get_word_of_day(db: Session = Depends(get_db)):
-    word_of_day = db.query(Character).order_by(func.random()).first() # func.random() ordena todos los registros de manera aleatoria y .first() selecciona el primero de esa lista aleatoria
-    if not word_of_day:
-        raise HTTPException(status_code=404, detail="No characters found")
-    return HanziSimpleResponse(hanzi=word_of_day.hanzi, pinyin=word_of_day.pinyin)
+    if 'word_of_day' not in cache:
+        word_of_day = db.query(Character).order_by(
+            func.random()).first()  # func.random() ordena todos los registros de manera aleatoria y .first() selecciona el primero de esa lista aleatoria
+        if not word_of_day:
+            raise HTTPException(status_code=404, detail="No characters found")
+        cache['word_of_day'] = HanziSimpleResponse(hanzi=word_of_day.hanzi, pinyin=word_of_day.pinyin)
+    return cache['word_of_day']
+
 
 @app.get("/characters/", response_model=List[CharacterFlashcardResponse])
 def get_characters(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)):
-    characters = db.query(Character.hanzi, Character.pinyin, Character.translation).offset(skip).limit(limit).all()
+    characters = db.query(Character.id, Character.hanzi, Character.pinyin, Character.translation).offset(skip).limit(limit).all()
     return characters
+
 
 @app.get("/characters/{character_id}/", response_model=CharacterDetailResponse)
 def get_character_detail(character_id: int, db: Session = Depends(get_db)):
-    character = db.query(Character).options(joinedload(Character.example_sentences)).filter(Character.id == character_id).first()
+    character = db.query(Character).options(joinedload(Character.example_sentences)).filter(
+        Character.id == character_id).first()
     if character is None:
         raise HTTPException(status_code=404, detail="Character not found")
     return character
