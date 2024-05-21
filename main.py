@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends, HTTPException, status
 from sqlalchemy.orm import Session, joinedload
 from database.database import SessionLocal
-from database.models import User, Character
+from database.models import User, Character, Progress
 from models import (UserResponse, UserCreate, Token, TokenData, Login, HanziSimpleResponse, CharacterFlashcardResponse,
                     CharacterDetailResponse)
 from utils.security import verify_password, create_access_token, get_password_hash
@@ -87,3 +87,26 @@ def get_character_detail(character_id: int, db: Session = Depends(get_db)):
     if character is None:
         raise HTTPException(status_code=404, detail="Character not found")
     return character
+
+@app.post("/characters/{character_id}/favorite")
+def mark_as_favorite(character_id: int, user_id: int, db: Session = Depends(get_db)):
+    progress_entry = db.query(Progress).filter_by(user_id=user_id, character_id=character_id).first()
+    if progress_entry:
+        if progress_entry.is_favorite:
+            progress_entry.is_favorite = True
+            db.commit()
+            return {"status": "Character marked as favorite"}
+        else:
+            progress_entry.is_favorite = False
+            db.commit()
+            return {"status": "Character unmarked as favorite"}
+    else:
+        new_progress = Progress(user_id=user_id, character_id=character_id, is_favorite=True)
+        db.add(new_progress)
+        db.commit()
+        return {"status": "Character marked as favorite and progress created"}
+
+@app.get("/users/{user_id}/favorites")
+def get_favorites(user_id: int, db: Session = Depends(get_db)):
+    favorites = db.query(Character).join(Progress).filter(Progress.user_id == user_id, Progress.is_favorite == True).all()
+    return favorites

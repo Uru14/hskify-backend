@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Date, ForeignKey, Text, TIMESTAMP, text
+from sqlalchemy import Column, Integer, String, Date, ForeignKey, Text, TIMESTAMP, text, Boolean
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -49,6 +49,7 @@ class Progress(Base):
     user_id = Column('userid', Integer, ForeignKey('users.userid'))
     character_id = Column('characterid', Integer, ForeignKey('characters.characterid'))
     learning_date = Column('learningdate', Date)
+    is_favorite = Column('is_favorite', Boolean, default=False)
 
 
 class Image(Base):

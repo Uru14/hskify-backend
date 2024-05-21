@@ -42,6 +42,7 @@ class ExampleSentenceResponse(BaseModel):
 
 
 class CharacterDetailResponse(BaseModel):
+    id: int
     hanzi: str
     pinyin: str
     translation: str
