@@ -1,6 +1,6 @@
 from pydantic import BaseModel, EmailStr
 from datetime import datetime
-from typing import List
+from typing import List, Union
 
 """
 Estos son los modelos de Pydantic, al crear estos modelos me aseguro de que los datos recibidos y enviados a traveés de 
@@ -60,7 +60,7 @@ class Token(BaseModel):
 
 
 class TokenData(BaseModel):
-    username: str | None = None
+    username: Union[str, None] = None
 
 
 class Login(BaseModel):
