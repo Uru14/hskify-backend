@@ -49,6 +49,7 @@ class CharacterDetailResponse(BaseModel):
     stroke_count: int
     hsk_level: int
     example_sentences: List[ExampleSentenceResponse]
+    isFavorite: bool
 
     class Config:
         orm_mode = True

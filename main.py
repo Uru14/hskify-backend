@@ -98,30 +98,40 @@ def get_characters(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)
     return characters
 
 
+@app.get("/characters/all", response_model=List[CharacterFlashcardResponse])
+def get_characters(db: Session = Depends(get_db)):
+    characters = db.query(Character.id, Character.hanzi, Character.pinyin, Character.translation).all()
+    return characters
+
+
 @app.get("/characters/{character_id}/", response_model=CharacterDetailResponse)
-def get_character_detail(character_id: int, db: Session = Depends(get_db)):
+def get_character_detail(character_id: int, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     character = db.query(Character).options(joinedload(Character.example_sentences)).filter(
         Character.id == character_id).first()
     if character is None:
         raise HTTPException(status_code=404, detail="Character not found")
+
+    progress_entry = db.query(Progress).filter_by(
+        user_id=current_user.id, character_id=character_id
+    ).first()
+
+    if progress_entry:
+        character.isFavorite = progress_entry.is_favorite
+    else:
+        character.isFavorite = False
     return character
 
 
 @app.post("/characters/{character_id}/favorite")
-def mark_as_favorite(character_id: int, user_id: int, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+def mark_as_favorite(character_id: int, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     user_id = current_user.id
     progress_entry = db.query(Progress).filter_by(user_id=user_id, character_id=character_id).first()
     if progress_entry:
-        if progress_entry.is_favorite:
-            progress_entry.is_favorite = True
-            db.commit()
-            return {"status": "Character marked as favorite"}
-        else:
-            progress_entry.is_favorite = False
-            db.commit()
-            return {"status": "Character unmarked as favorite"}
+        progress_entry.is_favorite = not progress_entry.is_favorite
+        db.commit()
+        return {"status": "Character favorite status updated", "is_favorite": progress_entry.is_favorite}
     else:
-        new_progress = Progress(user_id=user_id, character_id=character_id, is_favorite=True)
+        new_progress = Progress(user_id=user_id, character_id=character_id, is_favorite=True, learning_date=datetime.now())
         db.add(new_progress)
         db.commit()
         return {"status": "Character marked as favorite and progress created"}
@@ -152,7 +162,7 @@ def login_for_access_token(db: Session = Depends(get_db), form_data: OAuth2Passw
 
 
 @app.get("/users/me/", response_model=UserResponse)
-def read_users_me(current_user: User = Depends(decode_access_token)):
+def read_users_me(current_user: User = Depends(get_current_user)):
     return current_user
 
 
