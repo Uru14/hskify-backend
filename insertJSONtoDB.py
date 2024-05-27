@@ -1,36 +1,13 @@
 import json
+
 import psycopg2
 
 # Conectar a tu base de datos
-conn = psycopg2.connect(
-    dbname="hskify",
-    user="diego",
-    password="password",
-    host="localhost",
-    port="5432"
-)
+conn = psycopg2.connect(dbname='hskify', user='diego', password='password', host='localhost', port='5432')
 cursor = conn.cursor()
 
-"""
-# Cargar el JSON desde un archivo (o puedes adaptarlo para usar una variable)
-with open('hsk-level-1.json', 'r') as file:
-    characters = json.load(file)
 
-    # Preparar y ejecutar la consulta SQL para insertar datos
-    insert_query = '''
-    INSERT INTO Characters (CharacterID, Hanzi, Pinyin, StrokeCount, Translation, HSKLevel)
-    VALUES (%s, %s, %s, %s, %s, %s);
-    '''
-    
-    for character in characters:
-        # Combinar las traducciones en una sola cadena separada por comas
-        translations = ", ".join(character['translations'])
-        data_tuple = (character['id'], character['hanzi'], character['pinyin'], character['trazos'], translations, character['hsklevel'])
-        cursor.execute(insert_query, data_tuple)
-    
-"""
-
-with open('json/hsk-level-1-sentences.json', 'r', encoding='utf-8') as file:
+with open('json/hsk-level-1-sentences.json', encoding='utf-8') as file:
     sentences = json.load(file)
 
 insert_query = """

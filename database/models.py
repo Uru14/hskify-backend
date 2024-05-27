@@ -1,8 +1,9 @@
-from sqlalchemy import Column, Integer, String, Date, ForeignKey, Text, TIMESTAMP, text, Boolean
-from sqlalchemy.orm import relationship
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import TIMESTAMP, Boolean, Column, Date, ForeignKey, Integer, String, Text, text
+from sqlalchemy.orm import relationship, DeclarativeBase
 
-Base = declarative_base()
+
+class Base(DeclarativeBase):
+    pass
 
 
 class User(Base):
@@ -12,11 +13,11 @@ class User(Base):
     name = Column('name', String)
     email = Column('email', String, unique=True)
     password_hash = Column('passwordhash', String)
-    registration_date = Column('registrationdate', TIMESTAMP, server_default=text("CURRENT_TIMESTAMP"))
+    registration_date = Column('registrationdate', TIMESTAMP, server_default=text('CURRENT_TIMESTAMP'))
 
-    progresses = relationship("Progress")
-    scores = relationship("Score")
-    user_achievements = relationship("UserAchievement")
+    progresses = relationship('Progress')
+    scores = relationship('Score')
+    user_achievements = relationship('UserAchievement')
 
 
 class Character(Base):
@@ -29,8 +30,8 @@ class Character(Base):
     translation = Column('translation', String)
     hsk_level = Column('hsklevel', Integer)
 
-    example_sentences = relationship("ExampleSentence")
-    progresses = relationship("Progress")
+    example_sentences = relationship('ExampleSentence')
+    progresses = relationship('Progress')
 
 
 class ExampleSentence(Base):

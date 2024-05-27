@@ -1,11 +1,7 @@
-from pydantic import BaseModel, EmailStr
 from datetime import datetime
 from typing import List, Union
 
-"""
-Estos son los modelos de Pydantic, al crear estos modelos me aseguro de que los datos recibidos y enviados a traveés de 
-la API sean del tipo que espero, estén bien formateados y cumplan con las restricciones establecidas
-"""
+from pydantic import BaseModel, EmailStr
 
 
 class UserCreate(BaseModel):
@@ -49,7 +45,7 @@ class CharacterDetailResponse(BaseModel):
     stroke_count: int
     hsk_level: int
     example_sentences: List[ExampleSentenceResponse]
-    isFavorite: bool
+    is_favorite: bool
 
     class Config:
         orm_mode = True
