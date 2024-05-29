@@ -9,10 +9,11 @@ from sqlalchemy.orm import Session, joinedload
 from sqlalchemy.sql.expression import func
 
 from database.database import SessionLocal
-from database.models import Character, Progress, User
+from database.models import Character, Progress, User, Score
 from models import (
     CharacterDetailResponse,
     CharacterFlashcardResponse,
+    GameScore,
     HanziSimpleResponse,
     Token,
     UserCreate,
@@ -167,6 +168,15 @@ def mark_as_favorite(
         return {'status': 'Character marked as favorite and progress created'}
 
 
+@app.post('/game/{game_id}/score/', response_model=GameScore)
+def post_score(game_id: int, score_data: GameScore, db: Session = Depends(get_db), current_user: User = Depends(get_current_user),) -> Any:
+    score_entry = Score(game_id=game_id, user_id=current_user.id, score=score_data.score, difficulty=score_data.difficulty, parameters=score_data.parameters)
+    db.add(score_entry)
+    db.commit()
+    db.refresh(score_entry)
+    return score_entry
+
+
 @app.get('/users/favorites', response_model=List[CharacterFlashcardResponse])
 def get_favorites(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)) -> Any:
     favorites = (
@@ -204,3 +214,4 @@ if __name__ == '__main__':
         host="localhost",
         port=8000,
     )
+    

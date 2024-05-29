@@ -1,6 +1,6 @@
 import jwt
 from freezegun import freeze_time
-from datetime import datetime, timedelta
+from datetime import  timedelta
 
 from utils.security import create_access_token, SECRET_KEY, ALGORITHM
 import pytest

@@ -63,3 +63,9 @@ class TokenData(BaseModel):
 class Login(BaseModel):
     username: str
     password: str
+
+
+class GameScore(BaseModel):
+    score: int
+    difficulty: str
+    parameters: str #esto debería ser distinto, pero como solo tengo un juego lo dejo así para pasar el modo de juego
