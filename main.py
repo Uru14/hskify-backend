@@ -7,7 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session, joinedload
 from sqlalchemy.sql.expression import func
-
+from jose import JWTError, jwt
 from database.database import SessionLocal
 from database.models import Character, Progress, User, Score
 from models import (
@@ -17,7 +17,7 @@ from models import (
     HanziSimpleResponse,
     Token,
     UserCreate,
-    UserResponse, ExampleSentenceResponse,
+    UserResponse, ExampleSentenceResponse, TokenData,
 )
 from utils.security import (
     ACCESS_TOKEN_EXPIRE_MINUTES,
@@ -27,7 +27,7 @@ from utils.security import (
     decode_access_token,
     get_password_hash,
     get_user,
-    oauth2_scheme,
+    oauth2_scheme, SECRET_KEY, ALGORITHM,
 )
 import uvicorn
 from contexttimer import Timer
@@ -57,6 +57,8 @@ def get_current_user(db: Session = Depends(get_db), token: str = Depends(oauth2_
     if user is None:
         raise credentials_exception
     return user
+
+
 
 
 @app.post('/users/', response_model=UserResponse)
@@ -177,7 +179,7 @@ def post_score(game_id: int, score_data: GameScore, db: Session = Depends(get_db
     return score_entry
 
 
-@app.get('/users/favorites', response_model=List[CharacterFlashcardResponse])
+@app.get('/users/favorites', response_model=List[CharacterDetailResponse])
 def get_favorites(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)) -> Any:
     favorites = (
         db.query(Character)
@@ -185,7 +187,21 @@ def get_favorites(db: Session = Depends(get_db), current_user: User = Depends(ge
         .filter(Progress.user_id == current_user.id, Progress.is_favorite == True)  # noqa: E712
         .all()
     )
-    return favorites
+    # Convert Character objects to CharacterDetailResponse objects
+    response_data = [
+        CharacterDetailResponse(
+            id=character.id,
+            hanzi=character.hanzi,
+            pinyin=character.pinyin,
+            translation=character.translation,
+            stroke_count=character.stroke_count,
+            hsk_level=character.hsk_level,
+            example_sentences=[],  # Assuming you handle example_sentences elsewhere
+            is_favorite=progress.is_favorite  # Access is_favorite from the joined Progress table
+        )
+        for character, progress in zip(favorites, db.query(Progress).filter(Progress.character_id.in_(f for f in [c.id for c in favorites])))]  # noqa: E712
+
+    return response_data
 
 
 @app.post('/token', response_model=Token)
