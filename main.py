@@ -38,7 +38,7 @@ app = FastAPI()
 # Configuración de CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['https://hskify.vercel.app'],
+    allow_origins=['https://hskify.vercel.app', 'http://localhost:4200/'],
     allow_credentials=True,
     allow_methods=['*'],
     allow_headers=['*'],
