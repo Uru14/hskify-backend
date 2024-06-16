@@ -13,7 +13,7 @@ from models import TokenData
 # openssl rand -hex 32
 SECRET_KEY = '94c5a69806421a64c9f61722973f48782ea4d456389bee2e556c91507c27b709'
 ALGORITHM = 'HS256'
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
+ACCESS_TOKEN_EXPIRE_DAYS = 30
 
 pwd_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl='token')

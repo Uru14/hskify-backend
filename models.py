@@ -15,6 +15,7 @@ class UserResponse(BaseModel):
     email: EmailStr
     name: str
     registration_date: datetime
+    imageURL: str
 
     class Config:
         orm_mode = True
@@ -68,4 +69,18 @@ class Login(BaseModel):
 class GameScore(BaseModel):
     score: int
     difficulty: str
-    parameters: str #esto debería ser distinto, pero como solo tengo un juego lo dejo así para pasar el modo de juego
+    parameters: str  #esto debería ser distinto, pero como solo tengo un juego lo dejo así para pasar el modo de juego
+
+
+class AchievementResponse(BaseModel):
+    id: int
+    name: str
+    description: str
+    imageUrl: str
+
+
+class LeaderBoardResponse(BaseModel):
+    user_name: str
+    score: int
+    difficulty: str
+    parameters: str
