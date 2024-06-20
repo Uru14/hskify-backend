@@ -14,7 +14,7 @@ class User(Base):
     email = Column('email', String, unique=True)
     password_hash = Column('passwordhash', String)
     registration_date = Column('registrationdate', TIMESTAMP, server_default=text('CURRENT_TIMESTAMP'))
-    imageId = Column('imageid', Integer, default=7)
+    imageId = Column('imageid', Integer, ForeignKey('images.imageid'), default=7)
 
     progresses = relationship('Progress')
     scores = relationship('Score')

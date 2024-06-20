@@ -38,7 +38,7 @@ app = FastAPI()
 # Configuración de CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['https://hskify.vercel.app', 'http://localhost:4200/'],
+    allow_origins=['https://hskify.vercel.app', 'http://localhost:4200'],
     allow_credentials=True,
     allow_methods=['*'],
     allow_headers=['*'],
@@ -51,7 +51,6 @@ def get_db() -> Generator[Session, None, None]:
         yield db
     finally:
         db.close()
-
 
 
 def get_current_user(db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
@@ -67,19 +66,24 @@ def get_current_user(db: Session = Depends(get_db), token: str = Depends(oauth2_
 
 @app.post('/users/', )
 def create_user(user: UserCreate, db: Session = Depends(get_db)) -> dict[str, Any]:
+    """First: Query to obtain the user based on the email, if user already exist, it raised an HTTPException.
+    If the user dont exist in the database, the password is hashed and it creates a register of User in the database """
     db_user = db.query(User).filter(User.email == user.email).first()
     if db_user:
         raise HTTPException(status_code=400, detail='Email already registered')
     hashed_password = get_password_hash(user.password)
-    db_user = User(email=user.email, name=user.name, password_hash=hashed_password, registration_date=datetime.now(), imageId=7)
+    db_user = User(email=user.email, name=user.name, password_hash=hashed_password, registration_date=datetime.now(),
+                   imageId=7)
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
 
-    # Una vez creado el usuario en la base de datos, se crea también automáticamente un token para quedar autenticado.
+    """Once the user is created, a token is also created for that user"""
     access_token_expires = timedelta(days=ACCESS_TOKEN_EXPIRE_DAYS)
     access_token = create_access_token(data={'sub': db_user.email}, expires_delta=access_token_expires)
-    print("tokeeeeeeeen: ", access_token)
+    print("token: ", access_token)
+
+    """For the user just created, a default image is set"""
     user_img = db.query(Image).filter(db_user.imageId == Image.id).first()
 
     return {
@@ -93,13 +97,13 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)) -> dict[str, An
     }
 
 
-
-# Se crea un cache que guarda 1 item y expira después de 24h
+# Create a cache that stores 1 item and expires after 24 hours
 cache: TTLCache[str, HanziSimpleResponse] = TTLCache(maxsize=1, ttl=timedelta(days=1).total_seconds())
 
 
 @app.get('/wordDay/', response_model=HanziSimpleResponse)
 def get_word_of_day(db: Session = Depends(get_db)) -> Any:
+    """Get the word of the day, storing the result in cache"""
     if 'word_of_day' not in cache:
         word_of_day = (
             db.query(Character).order_by(func.random()).first()
@@ -113,6 +117,7 @@ def get_word_of_day(db: Session = Depends(get_db)) -> Any:
 
 @app.get('/characters/', response_model=List[CharacterFlashcardResponse])
 def get_characters(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)) -> list[Any]:
+    """Get a list of characters with pagination"""
     characters = (
         db.query(Character.id, Character.hanzi, Character.pinyin, Character.translation).offset(skip).limit(limit).all()
     )
@@ -164,6 +169,7 @@ def get_character_detail(
 def mark_as_favorite(
         character_id: int, db: Session = Depends(get_db), current_user: User = Depends(get_current_user),
 ) -> dict[str, Any]:
+    """Mark a character as favorite or remove from favorites"""
     user_id = current_user.id
     progress_entry = db.query(Progress).filter_by(user_id=user_id, character_id=character_id).first()
     if progress_entry:
@@ -192,6 +198,7 @@ def post_score(game_id: int, score_data: GameScore, db: Session = Depends(get_db
 
 @app.get('/users/favorites', response_model=List[CharacterDetailResponse])
 def get_favorites(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)) -> Any:
+    """Get the list of favorite characters for the current user"""
     if not current_user:
         raise credentials_exception
 
@@ -255,10 +262,12 @@ def read_users_me(db: Session = Depends(get_db), current_user: User = Depends(ge
 
 
 def count_favorite_words_user(user_id: int, db: Session) -> int:
+    """Count the number of favorite words for a user"""
     return db.query(func.count(Progress.id)).filter(Progress.user_id == user_id, Progress.is_favorite == True).scalar()
 
 
 def check_achievement(user_id: int, achievement_id: int, db: Session) -> bool:
+    """Check if a user has a specific achievement"""
     return db.query(
         exists().where(
             UserAchievement.user_id == user_id,
@@ -283,6 +292,7 @@ def grant_achievement(user_id: int, achievement_id: int, db: Session) -> bool:
 @app.get('/users/favorite/count')
 def count_favorite_words_for_current_user(db: Session = Depends(get_db),
                                           current_user: User = Depends(get_current_user)):
+    """Count favorite words for the current user and grant achievements based on the count"""
     if not current_user:
         raise credentials_exception
 
@@ -329,7 +339,6 @@ def get_user_achievement(db: Session = Depends(get_db), current_user: User = Dep
 
 @app.get('/users/scores', response_model=List[LeaderBoardResponse])
 def get_all_users_scores(db: Session = Depends(get_db)) -> List[LeaderBoardResponse]:
-
     scores = (
         db.query(Score)
         .join(User)
@@ -338,7 +347,6 @@ def get_all_users_scores(db: Session = Depends(get_db)) -> List[LeaderBoardRespo
 
     all_scores = []
     for scor in scores:
-
         user = db.query(User).filter(User.id == scor.user_id).first()
         all_scores.append(LeaderBoardResponse(
             user_name=user.name,
@@ -361,7 +369,6 @@ def delete_user(user_id: int, db: Session = Depends(get_db)):
     db.commit()
 
     return None
-
 
 
 if __name__ == '__main__':
